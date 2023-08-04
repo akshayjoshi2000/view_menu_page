@@ -1,4 +1,3 @@
-
 import { StyleSheet, View } from 'react-native';
 import GetImages from './screens/GetImages';
 
