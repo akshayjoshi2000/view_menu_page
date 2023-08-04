@@ -25,7 +25,11 @@
       "package": "com.joshiakshay2000.view_menu_page"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.joshiakshay2000.view_menu_page"
     },
     "extra": {
       "eas": {
