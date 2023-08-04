@@ -4,9 +4,11 @@ import { ref, get } from 'firebase/database';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-const documentId = '-NahQvFwvx4LVvwSmC65';
 
 const GetImages = () => {
+    const parameter_documentId = window.location.search;
+    const url_params = new URLSearchParams(parameter_documentId)
+    const  documentId =  url_params.get('id')
   const [imagesUrls, setImagesUrls] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,6 @@ const GetImages = () => {
         const imagesUrlRef = ref(database, 'restaurants/' + 'undefined/' + documentId + '/imagesBucketURL');
         const imagesUrlsSnapshot = await get(imagesUrlRef);
         const imagesUrls = imagesUrlsSnapshot.val();
-        console.log("image url array:", imagesUrls);
         setImagesUrls(imagesUrls);
       } catch (error) {
         console.error("Error fetching images URLs:", error);
@@ -28,12 +29,11 @@ const GetImages = () => {
   return (
     <div style={{ height: '100vh', overflow: 'hidden' }}>
       {imagesUrls.length > 0 && (
-        <div style={{ height: '80vh', width: '100%', position: 'relative', marginTop:'15vh' }}>
-          <Carousel
-            zoom={true}
+        <div style={{ height: '85vh', width: '100%', position: 'relative', marginTop:'10vh' }}>
+          <Carousel           
             showArrows={false}
             showStatus={false}
-            showIndicators={false}
+            showIndicators={true}
             showBullets={true}
             showThumbs={false}
             emulateTouch
@@ -41,7 +41,7 @@ const GetImages = () => {
             autoPlay={false}
             interval={3000}
             transitionTime={500}
-            lazyLoad={true}
+            lazyLoad={false}
             showNav={true}
             showThumbnails={true}
           >
@@ -50,7 +50,7 @@ const GetImages = () => {
                 <img
                   src={imageUrl}
                   alt={`Image ${index}`}
-                  style={{ objectFit: 'cover', height: '100%', width: '100%' }}
+                  style={{ objectFit: 'contain', height: '100%', width: '100%' }}
                 />
               </div>
             ))}
