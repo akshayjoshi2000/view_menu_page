@@ -20,6 +20,7 @@ const GetImages = () => {
         setImagesUrls(imagesUrls);
       } catch (error) {
         console.error("Error fetching images URLs:", error);
+        setImagesUrls([]);
       }
     };
 
