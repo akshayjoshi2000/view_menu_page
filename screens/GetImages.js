@@ -28,9 +28,13 @@ const GetImages = () => {
   }, []);
 
   return (
-    <div style={{ height: '100vh', overflow: 'hidden' }}>
+    <div style={{ height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    {/* Ad space */}
+    <div style={{ height: '20vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+
+    </div>
       {imagesUrls.length > 0 && (
-        <div style={{ height: '85vh', width: '100%', position: 'relative', marginTop:'10vh' }}>
+        <div style={{ height: '60vh', width: '100%', position: 'relative' }}>
           <Carousel           
             showArrows={false}
             showStatus={false}
@@ -58,9 +62,17 @@ const GetImages = () => {
           </Carousel>
         </div>
       )}
-      <h5>*prices may vary, Not handled by restauraunt</h5>
+      
+      <div style={{ height: '15vh', width: '100%', position: 'relative' }}>
+      {/* This empty space will take up 15% of the screen */}
     </div>
-  );
+
+    <div style={{ height: '10vh', width: '100%', position: 'relative', backgroundColor: '#00A67D', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '14px' }}>
+      {/* Text with green background */}
+      *prices may vary, website not handled by restaurant
+    </div>
+  </div>
+);
 };
 
 export default GetImages;
