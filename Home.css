@@ -1,0 +1,32 @@
+/* Home.css */
+
+/* Styles for the hero section */
+.hero {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease-out;
+  }
+  
+  /* Styles for the QR code overlay section */
+  .qr-code-overlay-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .qr-code-overlay-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    text-align: center;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+  }
+  
+  .qr-code-overlay-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  

@@ -1,23 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import ZoomSlider from 'react-instagram-zoom-slider';
 import database from '../firebase/config';
 import { ref, get } from 'firebase/database';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-
-const GetImages = () => {
-    const parameter_documentId = window.location.search;
-    const url_params = new URLSearchParams(parameter_documentId)
-    const  documentId =  url_params.get('id')
+function GetImages() {
   const [imagesUrls, setImagesUrls] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
+        const parameter_documentId = window.location.search;
+        const url_params = new URLSearchParams(parameter_documentId);
+        const documentId = url_params.get('id');
         const imagesUrlRef = ref(database, 'restaurants/' + 'undefined/' + documentId + '/imagesBucketURL');
         const imagesUrlsSnapshot = await get(imagesUrlRef);
         const imagesUrls = imagesUrlsSnapshot.val();
-        setImagesUrls(imagesUrls);
+        setImagesUrls(imagesUrls || []);
       } catch (error) {
         console.error("Error fetching images URLs:", error);
         setImagesUrls([]);
@@ -27,52 +25,104 @@ const GetImages = () => {
     fetchImages();
   }, []);
 
+  const slides = imagesUrls.map((imageUrl, index) => (
+    <div key={index} style={{ ...slideStyle, width: `calc(100% / ${imagesUrls.length})` }}>
+      <img src={imageUrl} alt={`Image ${index + 1}`} style={imageStyle} />
+    </div>
+  ));
+
   return (
-    <div style={{ height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-    {/* Ad space */}
-    <div style={{ height: '20vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+    <>
+      <style>
+        {`
+          body, html {
+            height: 100%;
+            overflow: hidden;
+          }
 
-    </div>
-      {imagesUrls.length > 0 && (
-        <div style={{ height: '60vh', width: '100%', position: 'relative' }}>
-          <Carousel           
-            showArrows={false}
-            showStatus={false}
-            showIndicators={true}
-            showBullets={true}
-            showThumbs={false}
-            emulateTouch
-            infiniteLoop={false}
-            autoPlay={false}
-            interval={3000}
-            transitionTime={500}
-            lazyLoad={false}
-            showNav={true}
-            showThumbnails={true}
-          >
-            {imagesUrls.map((imageUrl, index) => (
-              <div key={index} style={{ height: '100%', width: '100%' }}>
-                <img
-                  src={imageUrl}
-                  alt={`Image ${index}`}
-                  style={{ objectFit: 'contain', height: '100%', width: '100%' }}
-                />
-              </div>
-            ))}
-          </Carousel>
-        </div>
-      )}
-      
-      <div style={{ height: '15vh', width: '100%', position: 'relative' }}>
-      {/* This empty space will take up 15% of the screen */}
-    </div>
+          header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff; /* Replace with your header background color */
+            z-index: 100; /* Set a higher z-index to ensure it's above other elements */
+          }
 
-    <div style={{ height: '10vh', width: '100%', position: 'relative', backgroundColor: '#00A67D', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '14px' }}>
-      {/* Text with green background */}
-      *prices may vary, website not handled by restaurant
-    </div>
+          .content-container {
+            height: 100vh;
+            overflow: hidden;
+          }
+        `}
+      </style>
+   
+  <div style={{ width: '100%', height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', backgroundColor:'#cacecd' }}>
+  {/* Div 1: Displaying message */}
+  <div style={{ height: '8vh%', backgroundColor: '#cacecd', textAlign: 'center' , marginTop: '2vh'}}>
+    <p style={{ lineHeight: '100%', margin: '0', paddingTop: '1%', fontSize: '14px' , backgroundColor: '#00A67D', fontWeight: 'bold' }}>
+      Prices may vary. Not handled by restaurant 10%
+    </p>
   </div>
-);
+
+  {/* Div 2: Carousel */}
+  <div style={{ height: '65%', position: 'relative', backgroundColor: '#cacecd', textAlign: 'center', marginTop: '4vh'}}>
+    <ZoomSlider
+      slides={imagesUrls.map((imageUrl) => (
+        <div key={imageUrl}>
+          <img
+            src={imageUrl}
+            alt="Slide"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        </div>
+      ))}
+      initialSlide={0}
+      maxScale={3}
+      minScale={1}
+      //slideOverlay={null}
+      slideIndicatorTimeout={5000}
+      activeDotColor="#292d2c"
+      dotColor="#545958"
+    />
+  </div>
+  </div>
+
+  
+
+  {/* Div 3: Ads */}
+  <div>
+    <div style={{ height: '25%' }}>
+            {/*add ads here*/}
+      </div>
+</div>
+
+  </>
+  );
+
+
+
+  
+}
+
+// CSS Styles
+const containerStyle = {
+  height: '60vh',
+  overflow: 'hidden',
+};
+
+const slideStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+};
+
+const imageStyle = {
+  objectFit: 'contain',
+  maxWidth: '100%',
+  maxHeight: '100%',
 };
 
 export default GetImages;
