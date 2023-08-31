@@ -1,0 +1,8 @@
+<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6890415870609973"
+     crossorigin="anonymous"></script>
+
+
+<meta name="google-site-verification" content="GLwPCA-MG4SVhZSwDTp8xoyYfSQEbzbgbmfD_9YmjME" />

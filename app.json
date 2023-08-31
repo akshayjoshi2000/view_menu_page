@@ -35,6 +35,9 @@
       "eas": {
         "projectId": "6d08df3b-9609-412f-9ab7-6d8b93de3faa"
       }
+    },
+    "ads": {
+      "adsTxt": "./ads.txt"
     }
   }
 }

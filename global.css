@@ -1,0 +1,9 @@
+/* global.css */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* Set the font family for the entire application */
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Add any other global styles you need */

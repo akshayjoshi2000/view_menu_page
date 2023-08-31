@@ -2,22 +2,24 @@ import { StyleSheet, View } from 'react-native';
 import GetImages from './screens/GetImages';
 import React, { useEffect } from "react";
 import Home from './Home';
-import AdsTxt from './AdsTxt';
+import AdsTxt from './ads.txt';
+import Contact from './screens/Contact';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './global.css'; // Import the global CSS file
+import ReactDOM from "react-dom/client";
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
 
 
 export default function App() {
-  
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6890415870609973";
-    script.async = true;
-    document.head.appendChild(script);
-  }, []);
 
   return (
     <Router>
       <Routes>
+       <Route path="/contact" element={<Contact />} />
         <Route path="/view" element={<GetImages />} />
         <Route path="/ads.txt" element={<AdsTxt />} />
         <Route path="/" element={<Home />} />
