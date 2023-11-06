@@ -1,9 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import GetImages from './screens/GetImages';
+import Demo from './screens/Demo';
 import React, { useEffect } from "react";
 import Home from './Home';
-import AdsTxt from './ads.txt';
 import Contact from './screens/Contact';
+import AboutUsPage from './screens/AboutUsPage';
+import PrivacyPolicy from './screens/PrivacyPolicy';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './global.css'; // Import the global CSS file
 import ReactDOM from "react-dom/client";
@@ -19,9 +21,11 @@ export default function App() {
   return (
     <Router>
       <Routes>
-       <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/demo" element={<Demo />} />
         <Route path="/view" element={<GetImages />} />
-        <Route path="/ads.txt" element={<AdsTxt />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>

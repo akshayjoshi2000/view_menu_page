@@ -1,8 +1,17 @@
 <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6890415870609973"
-     crossorigin="anonymous"></script>
 
+<link rel="canonical" href="https://scanformenu.online/" />
+    <link rel="canonical" href="https://scanformenu.online/about" />
+    <link rel="canonical" href="https://scanformenu.online/privacy" />
+    <script type="text/javascript"
+        src="https://cdn.diclotrans.com/sdk/v1/20550/150c9abfada3df0b4de68f130a377772abcee464/lib.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1451426234429612"
+        crossorigin="anonymous"></script>
 
-<meta name="google-site-verification" content="GLwPCA-MG4SVhZSwDTp8xoyYfSQEbzbgbmfD_9YmjME" />
+    <script type="text/javascript"
+        src="https://cdn.diclotrans.com/sdk/v1/20602/edf22eab9c12dc53f47c252738b69a544231b38a/lib.js"></script>
+     <meta name="google-site-verification" content="rb2egoFNKIxg3G7-m1LfuOiEZ27Hs52WrMECvuAT_P4" />
+    <meta name="google-adsense-account" content="ca-pub-1451426234429612">
+    <meta name="site-verification" content="6bc5904d6ce827bec912356f062d20a8" />

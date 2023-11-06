@@ -72,6 +72,7 @@ body::-webkit-scrollbar {
   color: #f39c12; /* Set your navigation link hover color */
 }
 
+
 /* Hamburger menu toggle styles */
 .menu-toggle-button {
   display: none;
@@ -208,11 +209,17 @@ body::-webkit-scrollbar {
 
 /*Who Are we*/
 .about-us-container {
+  position: relative;
+  float: left;
+  max-width: 1200px; /* Set a maximum width for the section */
+  margin-bottom: 20px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex:1;
+  flex-direction: row; /* Stack sections vertically on mobile */
+  align-items: center; /* Center items horizontally */
   padding: 40px;
   text-align: center;
+  margin-right: 50px;
 }
 
 /* Style for the "Who We Are" section */
@@ -392,7 +399,7 @@ body::-webkit-scrollbar {
 .footer {
   background-color: #333;
   color: #fff;
-  padding: 20px;
+  padding: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -401,7 +408,7 @@ body::-webkit-scrollbar {
   flex: 1;
   position: relative;
   margin-bottom: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 
@@ -419,12 +426,40 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding-right: 20px; /* Add right padding */
+}
+.footer-top {
+  margin-left: 0; /* Remove the left margin */
+  
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-text {
+  display: flex;
+  align-items: center;
+}
+
+.privacy-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
 }
 
 /* 1---------------------------------------------------------------------------------------------*/
+/* Base styles */
+
 /* Responsive styles for screens up to 768px */
 @media screen and (max-width: 768px) {
 
+  /* Header styles */
+  .header {
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+  }
 
   .menu-toggle-button {
     display: block;
@@ -461,24 +496,17 @@ body::-webkit-scrollbar {
     font-size: 18px;
   }
 
-  .header {
-    width: 100%;
-    position: relative; /* Add this line */
-    z-index: 2; /* Add this line */
-    background-color: transparent;
-  }
-
   .tagline {
     margin-left: 0;
     text-align: center;
   }
-  
-  
+
   /* Banner styles */
   .banner-container {
     position: relative;
     overflow: hidden;
     width: 100%;
+    align-items: center;
   }
 
   .banner-overlay {
@@ -495,20 +523,15 @@ body::-webkit-scrollbar {
     height: auto;
     object-fit: cover;
   }
-  
-  .banner-heading,
-  .banner-subtext,
-  .contact-button {
+
+  .banner-heading {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-60%);
     text-align: center;
     color: #fff;
     transition: font-size 0.3s ease-in-out, top 0.3s ease-in-out;
     z-index: 2;
-  }
-
-  .banner-heading {
     top: 40%;
     font-size: 25px;
   }
@@ -521,130 +544,175 @@ body::-webkit-scrollbar {
     display: none; 
   }
 
-   /* Style for the container */
-.about-us-container {
+  /* About Us section */
+  .about-us-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .about-us-section {
+    max-width: 800px;
+    margin-bottom: 20px;
+    color: #000000;
+  }
+
+  .about-us-heading {
+    font-size: 24px;
+  }
+
+  .about-us-text {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .image-collage {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .image-collage img {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Why Us section */
+  .why-us-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .why-us-text-container {
+    order: 1;
+    font-size: 16px;
+    color: #000000;
+    font-weight: 500;
+  }
+
+  .why-us-image-content {
+    order: 2;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  /* Benefits section */
+  .benefits-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .benefits-image-content {
+    order: 2;
+    margin-top: 30px;
+  }
+
+  .benefits-text-container {
+    max-width: 90%;
+    order: 1;
+    margin: 0;
+  }
+
+  /* Nearest Restaurants section */
+  .nearest-restaurants-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .nearest-restaurants-image-content {
+    order: 2;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .nearest-restaurants-text-container {
+    max-width: 90%;
+    order: 1;
+    margin: 0;
+  }
+
+  .nearest-restaurants-heading {
+    font-size: 24px;
+    color: #0a0606;
+    margin-bottom: 10px;
+  }
+
+  .nearest-restaurants-text {
+    font-size: 16px;
+    color: #000000;
+    font-weight: 500;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+ 
+/* Footer styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
   display: flex;
-  flex-direction: column; /* Stack sections vertically on mobile */
-  align-items: center; /* Center items horizontally */
-  padding: 40px;
-  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  border-top: 1px solid #555;
+  flex: 1;
+  position: relative;
+  margin-bottom: 0;
+  width: 100%;
 }
 
-/* Style for the "Who We Are" section */
-.about-us-section {
-  max-width: 800px; /* Set a maximum width for the section */
-  margin-bottom: 20px;
-  color: #000000;
-  margin-right: 50px;
+
+/* Instagram icon */
+.footer-bottom img {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 5vw;
 }
 
-.about-us-heading {
-  font-size: 24px;
-}
-
-.about-us-text {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-/* Style for the image collage */
-.image-collage {
-  flex-direction: column-reverse; /* Stack images below content on mobile */
-  align-items: center; /* Center images horizontally */
-  margin-top: 10px; /* Adjust spacing between content and images */
-}
-
-.image-collage img {
-  max-width: 100%; /* Set full width for Image 1 on mobile */
-}
-
-/*why us*/
-.why-us-section {
+/* Additional styles to keep Instagram on the right */
+.footer-content {
+  position: relative;
   display: flex;
-  flex-direction: column; /* Stack sections vertically on mobile */
-  align-items: center; /* Center items horizontally */
-  padding: 40px;
-  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 8%; /* Add right padding */
+  padding-left: 2%;
+}
+.footer-top {
+  margin-left: 0; /* Remove the left margin */
+  
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.why-us-text-container {
-  order: 1;
-  font-size: 16px;
-  color: #000000;
-  font-weight: 500;
-}
-
-.why-us-image-content {
-  order: 2;
-  flex-direction: column-reverse; /* Stack images below content on mobile */
-  align-items: center; /* Center images horizontally */
-  margin-top: 20px; /* Adjust spacing between content and images */
-}
-
-/*benefits section*/
-
-.benefits-section {
-  flex-direction: column; /* Stack content vertically on mobile */
+.footer-text {
+  display: flex;
   align-items: center;
 }
 
-.benefits-image-content {
-  max-width: 80%; /* Adjust image container width as needed */
-  order: 2;
-  margin-top: 30px; /* Add spacing between image and text on mobile */
+.privacy-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
 }
 
-.benefits-text-container {
-  max-width: 90%; /* Adjust text container width as needed */
-  order: 1;
-  margin: 0; /* Remove the margin on mobile */
-}
-
-/* Styles for the Nearest Restaurants section on mobile */
-.nearest-restaurants-section {
-  display: flex;
-  flex-direction: column; /* Stack sections vertically on mobile */
-  align-items: center; /* Center items horizontally */
-  padding: 40px;
-  text-align: center;
-}
-
-.nearest-restaurants-image-content {
-  order: 2;
-  flex-direction: column-reverse; /* Stack images below content on mobile */
-  align-items: center; /* Center images horizontally */
-  margin-top: 20px; /* Adjust spacing between content and images */
-}
-
-
-.nearest-restaurants-text-container {
-  max-width: 90%; /* Adjust text container width as needed */
-  order: 1;
-  margin: 0; /* Remove the margin on mobile */
-}
-
-.nearest-restaurants-heading {
-  font-size: 24px;
-  color: #0a0606;
-  margin-bottom: 10px;
-}
-
-.nearest-restaurants-text {
-  font-size: 16px;
-  color: #000000;
-  font-weight: 500;
-  text-align: center; /* Center-align the text */
-  margin: 0 auto; /* Center the text horizontally */
-}
-
-
-.footer-bottom {
-  width: 30px;
-  height: 30px;
-  margin-right: 50px;
-}
-
-}
 /* 2----------------------------------------------------------------------------------- */
 /* Styles for screens larger than 768px */
 @media screen and (min-width: 769px) {
@@ -738,6 +806,28 @@ body::-webkit-scrollbar {
   height: auto;
   border-radius: 5px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* styles.css */
+
+.footer-top {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+.footer-text {
+  display: flex;
+  align-items: center;
+}
+
+.privacy-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
 }
   
 }

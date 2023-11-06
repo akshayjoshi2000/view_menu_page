@@ -57,10 +57,10 @@ const Contact = () => {
       </div>
         
         {isFeedbackSubmitted ? (
-          <p>Thank you for your feedback!</p>
+          <p>Thank you for your request! We will be in touch with you shortly.</p>
         ) : (
           <div style={feedbackFormStyle}>
-            <h3>Give Us Your Feedback</h3>
+            <h3>Schedule a free demo</h3>
             <form ref={form} onSubmit={sendEmail}>
               <input
                 type="text"
@@ -85,7 +85,7 @@ const Contact = () => {
                 style={inputStyle}
               />
               <textarea
-                placeholder="Feedback (15-300 characters)"
+                placeholder="Request a demo (15-300 characters), and kindly include your city and restaurant name."
                 value={feedbackText}
                 onChange={(e) => {
                     setFeedbackText(e.target.value);
