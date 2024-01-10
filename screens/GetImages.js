@@ -118,6 +118,7 @@ function GetImages() {
       console.error('Error handling slide change:', error);
     }
   };
+  
 
 
   useEffect(() => {
@@ -190,12 +191,12 @@ function GetImages() {
         // console.log(allAdvertisements)
 
         // Step 3: Filter out advertisements associated with the same restaurant and not in ads_reference
-        // Step 3: Filter out advertisements associated with the same restaurant and not in ads_reference
         const filteredAds = allAdvertisements.filter((ad) => {
           return (
             ad.data.restaurant !== documentId &&
             !restaurantAdIds.has(ad.id) &&
-            ad.data.impressions_left > 0  // Add this condition to filter out ads with impressions_left <= 0
+            ad.data.impressions_left > 0 && 
+            !ad.data.InRestaurantAd 
           );
         });
 
@@ -211,9 +212,6 @@ function GetImages() {
         const restaurantLocality = restaurantData.locality;
         const restaurantDistrict = restaurantData.district;
         const restaurantState = restaurantData.state;
-
-
-
 
         // Step 4: Categorize the filtered ads based on targetProperty
         const pincodeAds = filteredAds.filter((ad) =>
@@ -324,7 +322,7 @@ function GetImages() {
                   src={imageUrl}
                   alt={`Image ${index + 1}`}
                   style={{
-                    maxWidth: '100vw',
+                    maxWidth: '95vw',
                     objectFit: 'cover',
                     maxHeight: '75vh',
                   }}
@@ -334,9 +332,10 @@ function GetImages() {
             initialSlide={0}
             maxScale={3}
             minScale={1}
-            slideIndicatorTimeout={5000}
+            slideIndicatorTimeout={8000}
             activeDotColor="#ffffff"
             dotColor="#292d2c"
+            
           />
         )}
       </div>
@@ -359,7 +358,7 @@ function GetImages() {
             showThumbnails={false}  // Hide thumbnails
             showBullets={false}     // Hide bullets
             infinite={true}         // Enable infinite sliding
-            slideInterval={5000}    // Set the play interval to 5000ms (5 seconds)
+            slideInterval={8000}    // Set the play interval to 5000ms (5 seconds)
             autoPlay={true}         // Enable autoplay
             showFullscreenButton={false}
             showPlayButton={false}
@@ -369,6 +368,7 @@ function GetImages() {
             slideDuration={1}
             onClick={(index) => handleImageClick(index)}
             onSlide= {handleSlideChange}
+            style={{ height: '40px' }}
             renderItem={(item) => (
               <div style={{ width: '100%', height: '100%' }}>
                 <a
@@ -380,7 +380,7 @@ function GetImages() {
                     src={item.original}
                     alt={item.description}
                     style={{
-                      maxWidth: '100vw',
+                      maxWidth: '95vw',
                       objectFit: 'cover',
                       maxHeight: '80vh', // Adjust this value to your preference
                       margin: 'auto',
